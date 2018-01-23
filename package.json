@@ -1,0 +1,54 @@
+{
+  "name": "vue-virtual-keyboard",
+  "version": "0.0.1",
+  "description": "Virtual Keyboard",
+  "main": "dist/vue-vkeyboard.cjs.js",
+  "unpkg": "dist/vue-vkeyboard.min.js",
+  "cdn": "dist/vue-vkeyboard.min.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "npm run lint && tyu",
+    "lint": "xo",
+    "prepublishOnly": "npm run build",
+    "build": "bili --moduleName VueVKeyboard --format cjs,umd,umd-min --buble.transforms.dangerousForOf",
+    "example": "poi",
+    "build:example": "poi build"
+  },
+  "author": "Alexandre Bonaventure Geissmann <alexandre@springboardvr.com>",
+  "license": "MIT",
+  "poi": {
+    "entry": "example/index.js",
+    "dist": "example/dist",
+    "homepage": "/"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.4"
+  },
+  "devDependencies": {
+    "bili": "^1.6.5",
+    "eslint-config-rem": "^3.0.0",
+    "gh-pages": "^1.0.0",
+    "poi": "^9.1.4",
+    "tyu": "^1.0.5",
+    "vue": "^2.5.6",
+    "vue-template-compiler": "^2.5.6",
+    "vue-test-utils": "^1.0.0-beta.5",
+    "xo": "^0.18.0"
+  },
+  "xo": {
+    "extends": "rem/prettier",
+    "envs": [
+      "jest"
+    ],
+    "ignores": [
+      "example/**"
+    ]
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!lodash-es)"
+    ]
+  }
+}

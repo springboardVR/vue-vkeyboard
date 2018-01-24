@@ -12,18 +12,19 @@
   "scripts": {
     "test": "tyu",
     "lint": "xo",
-    "prepublishOnly": "npm run build",
     "build": "bili && bili --input src/index.esm.js --format es",
     "example": "poi",
     "build:example": "poi build",
-    "release": "yarn test && npx release-it"
+    "prepublishOnly": "yarn deploy:gh-pages",
+    "release": "yarn test && yarn build && npx release-it",
+    "deploy:gh-pages": "yarn build:example && yarn gh-pages -d example/dist"
   },
   "author": "Alexandre Bonaventure Geissmann <alexandre@springboardvr.com>",
   "license": "MIT",
   "poi": {
     "entry": "example/index.js",
     "dist": "example/dist",
-    "homepage": "/"
+    "homepage": "/vue-vkeyboard/"
   },
   "dependencies": {},
   "devDependencies": {

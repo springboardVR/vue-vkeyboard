@@ -1,5 +1,16 @@
 import { shallow } from 'vue-test-utils'
-import { formatKey, translateText } from './helpers.js'
+import { formatKey, formatRow, translateText } from './helpers.js'
+
+describe('#formatRow', () => {
+
+  it('should trim white space', () => {
+    const cb = jest.fn()
+    const result = formatRow('a  b', cb)
+    expect(cb.mock.calls[0][0]).toBe('a')
+    expect(cb.mock.calls[1][0]).toBe('b')
+  })
+
+})
 
 describe('#formatKey', () => {
 

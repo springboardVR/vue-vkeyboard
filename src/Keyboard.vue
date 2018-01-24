@@ -1,6 +1,5 @@
 <script>
-import { keyBy } from 'lodash-es'
-import { formatKey, translateText } from './helpers'
+import { formatKey, formatRow, translateText } from './helpers'
 import Vue from 'vue'
 
 
@@ -12,7 +11,7 @@ export default {
     },
     layout: {
       type: String,
-      default: 'fr_CA'
+      default: 'french-azerty-1'
     },
     mode: {
       type: String,
@@ -53,22 +52,19 @@ export default {
     availableLayouts() {
       return this.injectedLayouts
     },
-    availableLayoutsByName () {
-      return keyBy(this.availableLayouts, 'name')
-    },
-    availableLocalesByName () {
-      return keyBy(this.availableLocales, 'name')
-    },
     currentLayout () {
-      const layout = this.availableLayoutsByName[this.layout]
-      if (!layout) {
+      if (!this.availableLayouts) {
         Vue.util.warn(`no layouts provided`)
         return
       }
-      const locale = this.availableLocalesByName[this.lang ? this.lang : layout.lang[0]]
+      const layout = this.availableLayouts[this.layout]
+      if (!layout) {
+        Vue.util.warn(`no layout matching provided`)
+        return
+      }
+      const locale = this.availableLocales[this.lang ? this.lang : layout.lang[0]]
       if (!locale) {
         Vue.util.warn(`no locale matching lang provided`)
-        return
       }
       let mode = this.mode
       if (!([this.mode] in layout)) {
@@ -76,12 +72,12 @@ export default {
         mode = 'normal'
       }
       const rows = layout[mode].map((str) => {
-        return str.split(' ').map(key => {
+        return formatRow(str, key => {
           const { type, value } = formatKey(key)
           return {
             type,
             value,
-            translation: type === 'action' ? translateText(value, locale.display[value]) : value
+            translation: type === 'action' ? translateText(value, locale && locale.display[value]) : value
           }
         })
       })

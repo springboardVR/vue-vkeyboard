@@ -3,19 +3,38 @@
     <div class="example ba bw1 example-1">
 
       <input class="pa2 w-100 black bw0" type="text" v-model="text" placeholder="Type anything">
-      <KeyboardWithProvider :classnames="{
-        wrapper: 'tc',
-        row: '',
-        key: 'pa2'
-        }" @trigger="onKeyboardTrigger"/>
+      <KeyboardWithProvider
+        :classnames="{
+          wrapper: 'tc',
+          row: '',
+          key: 'pa2'
+        }"
+        :layout="currentLayout"
+        :lang="currentLang"
+        @trigger="onKeyboardTrigger"/>
+    </div>
+    <div class="w-25">
+      <select class="w-100" v-model="currentLayout">
+        <option v-for="(value, name) in layouts" :value="name">{{name}}</option>
+      </select>
+      <select class="w-100" v-model="currentLang">
+        <option v-for="(value, name) in locales" :value="name">{{name}}</option>
+      </select>
     </div>
   </div>
 </template>
 
 <script>
+import * as layouts from '@/layouts/index.js'
+import * as locales from '@/locales/index.js'
+
 export default {
   data: () => ({
-    text: ''
+    text: '',
+    currentLang: '',
+    currentLayout: 'french',
+    layouts,
+    locales,
   }),
   methods: {
     onKeyboardTrigger({ value, type }) {

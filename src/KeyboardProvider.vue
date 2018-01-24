@@ -1,13 +1,13 @@
 <script>
-import { fr_CA as frCALayout } from './layouts/index.js'
-import { fr_CA as frCALocale } from './locales/index.js'
+import * as layouts from './layouts/index.js'
+import * as locales from './locales/index.js'
 
 
 export default {
   name: 'KeyboardProvider',
   provide: {
-    _vkeyboard_locales: [frCALocale],
-    _vkeyboard_layouts: [frCALayout],
+    _vkeyboard_locales: locales,
+    _vkeyboard_layouts: layouts,
   },
   render(h) {
     return h('div', this.$slots.default)

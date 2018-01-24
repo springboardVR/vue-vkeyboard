@@ -1,8 +1,8 @@
 import { shallow, createLocalVue } from 'vue-test-utils'
 import KeyboardProvider from './KeyboardProvider.vue'
 import Keyboard from './Keyboard.vue'
-import * as defaultLayouts from '@/layouts'
-import * as defaultLocales from '@/locales'
+import * as defaultLayouts from '../test/fixtures/layouts'
+import * as defaultLocales from '../test/fixtures/locales'
 import Vue from 'vue'
 // import jest from 'jest'
 
@@ -12,6 +12,10 @@ describe('Keyboard', () => {
   beforeEach(() => {
     wrapper = shallow(Keyboard, {
       localVue,
+      propsData: {
+        layout: 'fr_CA',
+        lang: 'fr_CA',
+      },
       provide: {
         _vkeyboard_layouts: defaultLayouts,
         _vkeyboard_locales: defaultLocales,
@@ -78,8 +82,12 @@ describe('Keyboard', () => {
       provide: {
       }
     })
-    expect(Vue.util.warn.mock.calls[0][0]).toBe('no layouts provided');
+    expect(Vue.util.warn.mock.calls[0][0]).toBe('no layout matching provided');
     wrapper = shallow(Keyboard, {
+      propsData: {
+        layout: 'fr_CA',
+        lang: 'fr_CA',
+      },
       provide: {
         _vkeyboard_layouts: defaultLayouts,
       }

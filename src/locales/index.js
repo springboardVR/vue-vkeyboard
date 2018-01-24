@@ -1,1 +1,5 @@
-export { default as fr_CA } from './fr_CA'
+export { default as fr } from './content/fr'
+export { default as es } from './content/es'
+export { default as de } from './content/de'
+export { default as pt } from './content/pt'
+export { default as pl } from './content/pl'

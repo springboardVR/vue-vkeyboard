@@ -8,6 +8,11 @@ export const formatKey = (str) => {
   }
 }
 
+export const formatRow = (str, iterator) => {
+  const trimed = str.split(/\s+/)
+  return trimed.map(iterator)
+}
+
 export const translateText = (keyId, locale = '') => {
   const [translation] = locale.split(':')
   return translation || keyId

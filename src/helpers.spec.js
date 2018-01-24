@@ -1,5 +1,5 @@
 import { shallow } from 'vue-test-utils'
-import { formatKey } from './helpers.js'
+import { formatKey, translateText } from './helpers.js'
 
 describe('#formatKey', () => {
 
@@ -17,6 +17,17 @@ describe('#formatKey', () => {
       type: 'action'
     })
   })
+})
 
+describe('#translateText', () => {
+
+  it('should return translated string', () => {
+    const result = translateText('action', 'translated:info')
+    expect(result).toEqual('translated')
+  })
+  it('should return keyId if no translation available', () => {
+    const result = translateText('action', 'translated:info')
+    expect(result).toEqual('translated')
+  })
 
 })

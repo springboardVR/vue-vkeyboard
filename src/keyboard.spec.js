@@ -1,6 +1,8 @@
 import { shallow, createLocalVue } from 'vue-test-utils'
 import KeyboardProvider from './KeyboardProvider.vue'
 import Keyboard from './Keyboard.vue'
+import * as defaultLayouts from '@/layouts'
+import * as defaultLocales from '@/locales'
 import Vue from 'vue'
 // import jest from 'jest'
 
@@ -11,18 +13,8 @@ describe('Keyboard', () => {
     wrapper = shallow(Keyboard, {
       localVue,
       provide: {
-        _vkeyboard_layouts: [{
-          'normal': [
-            '# 1 2 3 4 5 6 7 8 9 0 - = {bksp}',
-            '{tab} q w e r t y u i o p ^ \u00b8 <',
-          ],
-          'shift': [
-            '| ! " / $ % ? & * ( ) _ + {bksp}',
-            '{tab} Q W E R T Y U I O P ^ \u00a8 >',
-            "{shift} \u00bb Z X C V B N M ' . / {shift}"
-          ],
-          name: 'fr_CA',
-        }]
+        _vkeyboard_layouts: defaultLayouts,
+        _vkeyboard_locales: defaultLocales,
       }
     })
   })
@@ -30,7 +22,7 @@ describe('Keyboard', () => {
   //render
   it('render correct amount of rows', () => {
     const rows = wrapper.findAll('.row')
-    expect(rows.length).toBe(2)
+    expect(rows.length).toBe(5)
   })
   it('render correct amount of keys', () => {
     const rows = wrapper.find('.row')
@@ -79,14 +71,31 @@ describe('Keyboard', () => {
     expect(Vue.util.warn.mock.calls.length).toBe(4);
     expect(Vue.util.warn.mock.calls[2][0]).toBe('undefined mode: bar');
   })
-  it('should warn if no provided layouts', () => {
+
+  it('should warn if no provided layouts or locales', () => {
     Vue.util.warn = jest.fn()
     wrapper = shallow(Keyboard, {
       provide: {
       }
     })
-    expect(Vue.util.warn.mock.calls.length).toBe(1);
     expect(Vue.util.warn.mock.calls[0][0]).toBe('no layouts provided');
+    wrapper = shallow(Keyboard, {
+      provide: {
+        _vkeyboard_layouts: defaultLayouts,
+      }
+    })
+    expect(Vue.util.warn.mock.calls[1][0]).toBe('no locale matching lang provided');
+    expect(Vue.util.warn.mock.calls.length).toBe(2);
+  })
+
+  //locale
+  it('should display translated text', () => {
+    const text = wrapper.find('.key-action-enter').text()
+    expect(text).toBe('Entr\u00e9e')
+  })
+  it('should not translate input', () => {
+    const text = wrapper.find('.key-input-a').text()
+    expect(text).toBe('a')
   })
 
   //events
@@ -95,7 +104,8 @@ describe('Keyboard', () => {
     expect(wrapper.emitted().trigger).toBeTruthy()
     expect(wrapper.emitted().trigger[0][0]).toEqual({
       value: '#',
-      type: 'input'
+      translation: '#',
+      type: 'input',
     })
   })
 })

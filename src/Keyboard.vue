@@ -1,15 +1,14 @@
 <script>
 import { keyBy } from 'lodash-es'
-import { formatKey } from './helpers'
+import { formatKey, translateText } from './helpers'
 import Vue from 'vue'
 
 
 export default {
   name: 'Keyboard',
   props: {
-    locale: {
+    lang: {
       type: String,
-      default: 'fr_CA'
     },
     layout: {
       type: String,
@@ -57,10 +56,18 @@ export default {
     availableLayoutsByName () {
       return keyBy(this.availableLayouts, 'name')
     },
+    availableLocalesByName () {
+      return keyBy(this.availableLocales, 'name')
+    },
     currentLayout () {
       const layout = this.availableLayoutsByName[this.layout]
       if (!layout) {
         Vue.util.warn(`no layouts provided`)
+        return
+      }
+      const locale = this.availableLocalesByName[this.lang ? this.lang : layout.lang[0]]
+      if (!locale) {
+        Vue.util.warn(`no locale matching lang provided`)
         return
       }
       let mode = this.mode
@@ -69,7 +76,14 @@ export default {
         mode = 'normal'
       }
       const rows = layout[mode].map((str) => {
-        return str.split(' ').map(key => formatKey(key))
+        return str.split(' ').map(key => {
+          const { type, value } = formatKey(key)
+          return {
+            type,
+            value,
+            translation: type === 'action' ? translateText(value, locale.display[value]) : value
+          }
+        })
       })
       return {
         rows
@@ -85,11 +99,11 @@ export default {
       <div class="row" :class="classnames.row" v-for="row in currentLayout.rows">
         <button
         class="keybtn"
-        :class="classnames.key"
+        :class="[classnames.key, `key-${key.type}-${key.value}`]"
         type="button"
         @click="onKeyPress(key)"
         v-for="key in row">
-        {{ key.value }}
+        {{ key.translation }}
       </button>
     </div>
     </template>

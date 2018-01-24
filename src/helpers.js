@@ -7,3 +7,8 @@ export const formatKey = (str) => {
     type: specialChar ? 'action' : 'input'
   }
 }
+
+export const translateText = (keyId, locale = '') => {
+  const [translation] = locale.split(':')
+  return translation || keyId
+}

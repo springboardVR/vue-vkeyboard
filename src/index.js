@@ -1,5 +1,5 @@
-import Keyboard from './Keyboard'
-import KeyboardProvider from './KeyboardProvider'
+import Keyboard from './Keyboard.vue'
+import KeyboardProvider from './KeyboardProvider.vue'
 
 const plugin = (Vue, { layouts = [], locales = []} = {}) => {
   const KeyboardWithProvider = {
@@ -11,5 +11,3 @@ const plugin = (Vue, { layouts = [], locales = []} = {}) => {
 }
 
 export default plugin
-export { Keyboard }
-export { KeyboardProvider }

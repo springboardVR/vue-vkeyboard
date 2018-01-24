@@ -13,7 +13,7 @@
         :lang="currentLang"
         @trigger="onKeyboardTrigger"/>
     </div>
-    <div class="w-25">
+    <div class="w-25 ml3">
       <select class="w-100" v-model="currentLayout">
         <option v-for="(value, name) in layouts" :value="name">{{name}}</option>
       </select>

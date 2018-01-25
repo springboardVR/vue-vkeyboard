@@ -1,7 +1,7 @@
 # Vue VKeyboard
 [![npm](https://img.shields.io/npm/v/vue-vkeyboard.svg)]()
 
-Virtual keyboard with multi-layouts and i18n support designed following [Mottie keyboard syntax](https://github.com/Mottie/Keyboard/wiki/Layout).
+Virtual keyboard with multi-layouts and i18n support designed to follow [Mottie keyboard syntax](https://github.com/Mottie/Keyboard/wiki/Layout).
 
 [Demo](https://springboardvr.github.io/vue-vkeyboard/)
 
@@ -49,7 +49,7 @@ classnames: {
 ## Currently supported languages
 - English
 - French
-- Deutch
+- German
 - Spanish
 - Polish
 - Portuguese
@@ -60,4 +60,5 @@ classnames: {
 
 
 ----
+![springboardvr-logo](http://springboardvr.com/assets/img/logos/springboardvr-wide-ondark-new.png)
 SpringboardVR - 2018

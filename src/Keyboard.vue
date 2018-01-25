@@ -13,7 +13,7 @@ export default {
       type: String,
       default: 'french-azerty-1'
     },
-    mode: {
+    typeset: {
       type: String,
       default: 'normal'
     },
@@ -66,12 +66,12 @@ export default {
       if (!locale) {
         Vue.util.warn(`no locale matching lang provided`)
       }
-      let mode = this.mode
-      if (!([this.mode] in layout)) {
-        Vue.util.warn(`undefined mode: ${this.mode}`)
-        mode = 'normal'
+      let typeset = this.typeset
+      if (!([this.typeset] in layout)) {
+        Vue.util.warn(`undefined typeset: ${this.typeset}`)
+        typeset = 'normal'
       }
-      const rows = layout[mode].map((str) => {
+      const rows = layout[typeset].map((str) => {
         return formatRow(str, key => {
           const { type, value } = formatKey(key)
           return {

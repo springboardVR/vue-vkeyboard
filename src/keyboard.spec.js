@@ -59,23 +59,6 @@ describe('Keyboard', () => {
     expect(wrapper.classes()).toContain('theme-black')
   })
 
-  //:mode
-  it('should render keys accordingly to :mode', () => {
-    wrapper.setProps({mode: 'shift'})
-    const key = wrapper.find('.keybtn')
-    expect(key.text()).toBe('|')
-  })
-  it('should warn if :mode isnt in layout', () => {
-    Vue.util.warn = jest.fn()
-    //HACK vue-test-utils triggers two rendering
-    wrapper.setProps({mode: 'foo'})
-    expect(Vue.util.warn.mock.calls.length).toBe(2);
-    expect(Vue.util.warn.mock.calls[0][0]).toBe('undefined mode: foo');
-    wrapper.setProps({mode: 'bar'})
-    expect(Vue.util.warn.mock.calls.length).toBe(4);
-    expect(Vue.util.warn.mock.calls[2][0]).toBe('undefined mode: bar');
-  })
-
   it('should warn if no provided layouts or locales', () => {
     Vue.util.warn = jest.fn()
     wrapper = shallow(Keyboard, {
@@ -114,6 +97,28 @@ describe('Keyboard', () => {
       value: '#',
       translation: '#',
       type: 'input',
+    })
+  })
+
+  //set
+  describe('typeset', () => {
+    it('should render correct :typeset', () => {
+      const key = wrapper.find('.keybtn')
+      expect(key.text()).toBe('#')
+      wrapper.setProps({
+        typeset: 'shift',
+      })
+      expect(key.text()).toBe('|')
+    })
+    it('should warn if :typeset isnt in layout', () => {
+      Vue.util.warn = jest.fn()
+      //HACK vue-test-utils triggers two rendering
+      wrapper.setProps({typeset: 'foo'})
+      expect(Vue.util.warn.mock.calls.length).toBe(2);
+      expect(Vue.util.warn.mock.calls[0][0]).toBe('undefined typeset: foo');
+      wrapper.setProps({typeset: 'bar'})
+      expect(Vue.util.warn.mock.calls.length).toBe(4);
+      expect(Vue.util.warn.mock.calls[2][0]).toBe('undefined typeset: bar');
     })
   })
 })

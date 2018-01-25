@@ -12,7 +12,7 @@
   "scripts": {
     "test": "tyu",
     "lint": "xo",
-    "build": "bili && bili --input src/index.esm.js --format es",
+    "build": "npx rimraf dist && bili && bili --input src/index.esm.js --format es",
     "example": "poi",
     "build:example": "poi build",
     "prepublishOnly": "yarn deploy:gh-pages",

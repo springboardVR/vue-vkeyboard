@@ -32,7 +32,7 @@ export default {
   data: () => ({
     text: '',
     currentLang: '',
-    currentLayout: 'french',
+    currentLayout: 'msUSEnglish',
     layouts,
     locales,
   }),

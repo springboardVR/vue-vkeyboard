@@ -1,4 +1,5 @@
 export { default as fr } from './content/fr'
+export { default as en } from './content/en'
 export { default as es } from './content/es'
 export { default as de } from './content/de'
 export { default as pt } from './content/pt'

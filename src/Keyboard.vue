@@ -12,7 +12,7 @@ export default {
     },
     layout: {
       type: String,
-      default: 'french-azerty-1'
+      default: 'msUSEnglish'
     },
     typeset: {
       type: String,

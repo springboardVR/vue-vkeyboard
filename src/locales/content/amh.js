@@ -20,7 +20,7 @@ export default  {
 		's': '\u21e7:መለወጥ', // thick hollow up arrow
 		'shift': 'Shift:መለወጥ',
 		'sign': '\u00b1:የሒሣብ፡ ምልክት፡ መቀየር', // +/- sign for num pad
-		'space': '&nbsp;:ክፍት፡ቦታ',
+		'space': '\u00A0:ክፍት፡ቦታ',
 		't': '\u21e5:መግፊያ', // right arrow to bar (used since this virtual keyboard works with one directional tabs)
 		'tab': '\u21e5 Tab:መግፊያ' // \u21b9 is the true tab symbol (left & right arrows)
 	},

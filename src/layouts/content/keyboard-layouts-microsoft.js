@@ -1520,7 +1520,7 @@ export default  {
 		's'      : '\u21e7:Shift',        // thick hollow up arrow
 		'shift'  : 'Shift:Shift',
 		'sign'   : '\u00b1:Change Sign',  // +/- sign for num pad
-		'space'  : '&nbsp;:Space',
+		'space'  : '\u00A0:Space',
 		't'      : '\u21e5:Tab',          // right arrow to bar (used since this virtual keyboard works with one directional tabs)
 		'tab'    : '\u21e5 Tab:Tab'       // \u21b9 is the true tab symbol (left & right arrows)
 	},
@@ -4699,7 +4699,7 @@ export default  {
 		's': '\u21e7:መለወጥ', // thick hollow up arrow
 		'shift': 'Shift:መለወጥ',
 		'sign': '\u00b1:የሒሣብ፡ ምልክት፡ መቀየር', // +/- sign for num pad
-		'space': '&nbsp;:ክፍት፡ቦታ',
+		'space': '\u00A0:ክፍት፡ቦታ',
 		't': '\u21e5:መግፊያ', // right arrow to bar (used since this virtual keyboard works with one directional tabs)
 		'tab': '\u21e5 Tab:መግፊያ' // \u21b9 is the true tab symbol (left & right arrows)
 	},
@@ -4904,7 +4904,7 @@ export default  {
 		's'      : '\u21e7:Umschalttaste', // thick hollow up arrow
 		'shift'  : 'Umschalt:Umschalttaste',
 		'sign'   : '\u00b1:Vorzeichen wechseln', // +/- sign for num pad
-		'space'  : '&nbsp;:Leertaste',
+		'space'  : '\u00A0:Leertaste',
 		't'      : '\u21e5:Tabulatortaste', // right arrow to bar (used since this virtual keyboard works with one directional tabs)
 		'tab'    : '\u21e5 Tab:Tabulatortaste' // \u21b9 is the true tab symbol (left & right arrows)
 	},
@@ -4935,7 +4935,7 @@ export default  {
 		's'      : '\u21e7:Cambio',        // thick hollow up arrow
 		'shift'  : 'Cambio:Cambio',
 		'sign'   : '\u00b1:Cambiar Signo',  // +/- sign for num pad
-		'space'  : '&nbsp;:Espacio',
+		'space'  : '\u00A0:Espacio',
 		't'      : '\u21e5:Tab',          // right arrow to bar (used since this virtual keyboard works with one directional tabs)
 		'tab'    : '\u21e5 Tab:Tab'       // \u21b9 is the true tab symbol (left & right arrows)
 	},
@@ -4965,7 +4965,7 @@ export default  {
 		's'      : '\u21e7:Shift',
 		'shift'  : 'Shift:Shift',
 		'sign'   : '\u00b1:Change Sign',
-		'space'  : '&nbsp;:Space',
+		'space'  : '\u00A0:Space',
 		't'      : '\u21e5:Tab',
 		'tab'    : '\u21e5 Tab:Tab'
 	},
@@ -5020,7 +5020,7 @@ export default  {
 		's'      : '\u21e7:Majuscule', // thick hollow up arrow
 		'shift'  : 'Maj:Majuscule',
 		'sign'   : '\u00b1:Change de signe', // +/- sign for num pad
-		'space'  : '&nbsp;:Espace',
+		'space'  : '\u00A0:Espace',
 		't'      : '\u21e5:Tabulation', // right arrow to bar (used since this virtual keyboard works with one directional tabs)
 		'tab'    : '\u21e5 Tab:Tabulation' // \u21b9 is the true tab symbol (left & right arrows)
 	},
@@ -5051,7 +5051,7 @@ export default  {
 		's'      : '\u21e7:Shift',        // thick hollow up arrow
 		'shift'  : 'Shift:Shift',
 		'sign'   : '\u00b1:שינוי סימן',  // +/- sign for num pad
-		'space'  : '&nbsp;:רווח',
+		'space'  : '\u00A0:רווח',
 		't'      : '\u21e5:Tab',          // right arrow to bar (used since this virtual keyboard works with one directional tabs)
 		'tab'    : '\u21e5 Tab:Tab'       // \u21b9 is the true tab symbol (left & right arrows)
 	},
@@ -5084,7 +5084,7 @@ export default  {
 		's'      : '\u21e7:Shift',        // thick hollow up arrow
 		'shift'  : 'Shift:Shift',
 		'sign'   : '\u00b1:Change Sign',  // +/- sign for num pad
-		'space'  : '&nbsp;:Space',
+		'space'  : '\u00A0:Space',
 		't'      : '\u21e5:Tab',          // right arrow to bar (used since this virtual keyboard works with one directional tabs)
 		'tab'    : '\u21e5 Tab:Tab'       // \u21b9 is the true tab symbol (left & right arrows)
 	},
@@ -5115,7 +5115,7 @@ export default  {
 		's'      : '\u21e7:Maiusc',        // thick hollow up arrow
 		'shift'  : 'Maiusc:Maiusc',
 		'sign'   : '\u00b1:Cambia Segno',  // +/- sign for num pad
-		'space'  : '&nbsp;:Spazio',
+		'space'  : '\u00A0:Spazio',
 		't'      : '\u21e5:Tab',          // right arrow to bar (used since this virtual keyboard works with one directional tabs)
 		'tab'    : '\u21e5 Tab:Tab'       // \u21b9 is the true tab symbol (left & right arrows)
 	},
@@ -5174,7 +5174,7 @@ export default  {
 		's'      : '\u21e7:Shift',        // thick hollow up arrow
 		'shift'  : 'Shift:Shift',
 		'sign'   : '\u00b1:Change Sign',  // +/- sign for num pad
-		'space'  : '&nbsp;:Space',
+		'space'  : '\u00A0:Space',
 		't'      : '\u21e5:Tab',          // right arrow to bar (used since this virtual keyboard works with one directional tabs)
 		'tab'    : '\u21e5 Tab:Tab'       // \u21b9 is the true tab symbol (left & right arrows)
 	},
@@ -5220,7 +5220,7 @@ export default  {
 		's'      : '\u21e7:Shift',        // thick hollow up arrow
 		'shift'  : 'Shift:Shift',
 		'sign'   : '\u00b1:Change Sign',  // +/- sign for num pad
-		'space'  : '&nbsp;:Space',
+		'space'  : '\u00A0:Space',
 		't'      : '\u21e5:Tab',          // right arrow to bar (used since this virtual keyboard works with one directional tabs)
 		'tab'    : '\u21e5 Tab:Tab'       // \u21b9 is the true tab symbol (left & right arrows)
 	},
@@ -5279,7 +5279,7 @@ export default  {
 		's'      : '\u21e7:Shift',        // thick hollow up arrow
 		'shift'  : 'Shift:Shift',
 		'sign'   : '\u00b1:Zmień znak',  // +/- sign for num pad
-		'space'  : '&nbsp;:Spacja',
+		'space'  : '\u00A0:Spacja',
 		't'      : '\u21e5:Tab',          // right arrow to bar (used since this virtual keyboard works with one directional tabs)
 		'tab'    : '\u21e5 Tab:Tab'       // \u21b9 is the true tab symbol (left & right arrows)
 	},
@@ -5310,7 +5310,7 @@ export default  {
 		's'      : '\u21e7:Shift/Maiúsculas',               // ALTERNATE shift button - unicode for a thick up arrow
 		'shift'  : '\u21ea Shift:Maiúsculas-Minúsculas',   // Shift button text
 		'sign'   : '\u00b1:Mudar Sinal',                     // Change sign (used in num pad) - unicode for a +- symbol
-		'space'  : '&nbsp;:Espaço',                         // Space button text
+		'space'  : '\u00A0:Espaço',                         // Space button text
 		't'      : '\u21e5:Tab/Tabela/Avançar',             // ALTERNATE tab button - unicode for right arrow to bar (used since only one directional tabs available)
 		'tab'    : '\u21e5 Tab:Tabela/Avançar'              // Tab button text (Note: \u21b9 is the true tab symbol (left & right arrows) but not used here)
 	},
@@ -5350,7 +5350,7 @@ export default  {
 		's'      : '\u21e7:Shift',        // thick hollow up arrow
 		'shift'  : 'Shift:Shift',
 		'sign'   : '\u00b1:Schimba semnul',  // +/- sign for num pad
-		'space'  : '&nbsp;:Spatiu',
+		'space'  : '\u00A0:Spatiu',
 		't'      : '\u21e5:Tab',          // right arrow to bar (used since this virtual keyboard works with one directional tabs)
 		'tab'    : '\u21e5 Tab:Tab'       // \u21b9 is the true tab symbol (left & right arrows)
 	},
@@ -5414,7 +5414,7 @@ export default  {
 		's'      : '\u21e7:Ndryshim',        // thick hollow up arrow
 		'shift'  : 'Ndryshim:Ndryshim',
 		'sign'   : '\u00b1:Ndryshimi Regjistrohu',  // +/- sign for num pad
-		'space'  : '&nbsp;:Hap\u00ebsir\u00eb',
+		'space'  : '\u00A0:Hap\u00ebsir\u00eb',
 		't'      : '\u21e5:Tab',          // right arrow to bar (used since this virtual keyboard works with one directional tabs)
 		'tab'    : '\u21e5 Tab:Tab'       // \u21b9 is the true tab symbol (left & right arrows)
 	},

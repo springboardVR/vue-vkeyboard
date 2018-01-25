@@ -23,7 +23,7 @@ export default  {
 		's'      : '\u21e7:Ndryshim',        // thick hollow up arrow
 		'shift'  : 'Ndryshim:Ndryshim',
 		'sign'   : '\u00b1:Ndryshimi Regjistrohu',  // +/- sign for num pad
-		'space'  : '&nbsp;:Hap\u00ebsir\u00eb',
+		'space'  : '\u00A0:Hap\u00ebsir\u00eb',
 		't'      : '\u21e5:Tab',          // right arrow to bar (used since this virtual keyboard works with one directional tabs)
 		'tab'    : '\u21e5 Tab:Tab'       // \u21b9 is the true tab symbol (left & right arrows)
 	},

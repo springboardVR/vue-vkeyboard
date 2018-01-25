@@ -21,7 +21,7 @@ export default  {
 		's'      : '\u21e7:Maiusc',        // thick hollow up arrow
 		'shift'  : 'Maiusc:Maiusc',
 		'sign'   : '\u00b1:Cambia Segno',  // +/- sign for num pad
-		'space'  : '&nbsp;:Spazio',
+		'space'  : '\u00A0:Spazio',
 		't'      : '\u21e5:Tab',          // right arrow to bar (used since this virtual keyboard works with one directional tabs)
 		'tab'    : '\u21e5 Tab:Tab'       // \u21b9 is the true tab symbol (left & right arrows)
 	},

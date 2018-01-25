@@ -21,7 +21,7 @@ export default  {
 		's'      : '\u21e7:Shift/Maiúsculas',               // ALTERNATE shift button - unicode for a thick up arrow
 		'shift'  : '\u21ea Shift:Maiúsculas-Minúsculas',   // Shift button text
 		'sign'   : '\u00b1:Mudar Sinal',                     // Change sign (used in num pad) - unicode for a +- symbol
-		'space'  : '&nbsp;:Espaço',                         // Space button text
+		'space'  : '\u00A0:Espaço',                         // Space button text
 		't'      : '\u21e5:Tab/Tabela/Avançar',             // ALTERNATE tab button - unicode for right arrow to bar (used since only one directional tabs available)
 		'tab'    : '\u21e5 Tab:Tabela/Avançar'              // Tab button text (Note: \u21b9 is the true tab symbol (left & right arrows) but not used here)
 	},

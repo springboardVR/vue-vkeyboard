@@ -21,7 +21,7 @@ export default  {
 		's'      : '\u21e7:Shift',
 		'shift'  : 'Shift:Shift',
 		'sign'   : '\u00b1:Change Sign',
-		'space'  : '&nbsp;:Space',
+		'space'  : '\u00A0:Space',
 		't'      : '\u21e5:Tab',
 		'tab'    : '\u21e5 Tab:Tab'
 	},

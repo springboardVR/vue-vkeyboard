@@ -21,7 +21,7 @@ export default  {
 		's'      : '\u21e7:Umschalttaste', // thick hollow up arrow
 		'shift'  : 'Umschalt:Umschalttaste',
 		'sign'   : '\u00b1:Vorzeichen wechseln', // +/- sign for num pad
-		'space'  : '&nbsp;:Leertaste',
+		'space'  : '\u00A0:Leertaste',
 		't'      : '\u21e5:Tabulatortaste', // right arrow to bar (used since this virtual keyboard works with one directional tabs)
 		'tab'    : '\u21e5 Tab:Tabulatortaste' // \u21b9 is the true tab symbol (left & right arrows)
 	},

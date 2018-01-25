@@ -11,9 +11,16 @@ Virtual keyboard with multi-layouts and i18n support designed to follow [Mottie 
 - Unstyled keyboard (Bring your own style)
 
 ## Usage
+
+### Installation
 ```
 npm install vue-vkeyboard
 yarn add vue-vkeyboard
+```
+### Use plugin
+```
+import VueVKeyboard from 'vue-vkeyboard'
+Vue.use(VueVKeyboard)
 ```
 
 ## API

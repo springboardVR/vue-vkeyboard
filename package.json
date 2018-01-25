@@ -1,6 +1,6 @@
 {
   "name": "vue-vkeyboard",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Virtual Keyboard",
   "main": "dist/vue-vkeyboard.cjs.js",
   "unpkg": "dist/vue-vkeyboard.min.js",

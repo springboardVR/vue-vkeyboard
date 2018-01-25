@@ -60,9 +60,7 @@ classnames: {
 
 
 ----
-<div style="background-color: grey">
-test
-</div>
-![springboardvr-logo](http://springboardvr.com/assets/img/logos/springboardvr-wide-ondark-new.png)
+
+![springboardvr-logo](https://avatars0.githubusercontent.com/u/28344339?s=200&v=4)
 
 SpringboardVR - 2018

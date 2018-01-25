@@ -119,7 +119,9 @@ export default {
         type="button"
         @click="onKeyPress(key)"
         v-for="key in row">
-        {{ key.translation }}
+          <slot :name="`${key.type}:${key.value}`" :args="key">
+            {{ key.translation }}
+          </slot>
       </button>
     </div>
     </template>

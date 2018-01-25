@@ -1,4 +1,4 @@
-import { shallow, createLocalVue } from 'vue-test-utils'
+import { mount, shallow, createLocalVue } from 'vue-test-utils'
 import KeyboardProvider from './KeyboardProvider.vue'
 import Keyboard from './Keyboard.vue'
 import * as defaultLayouts from '../test/fixtures/layouts'
@@ -130,6 +130,31 @@ describe('Keyboard', () => {
       wrapper.setProps({typeset: 'foo'})
       expect(Vue.util.warn.mock.calls.length).toBe(1);
       expect(Vue.util.warn.mock.calls[0][0]).toBe('undefined typeset: foo');
+    })
+  })
+
+  describe('custom keys via scoped slots', () => {
+    it('should render scopedslot', () => {
+      wrapper = shallow(Keyboard, {
+        slots: {
+          'input:#': {
+            render(h) {
+              return h('span', 'scopedslot')
+            }
+          }
+        },
+        propsData: {
+          layout: 'fr_CA',
+          lang: 'fr_CA',
+        },
+        provide: {
+          _vkeyboard_layouts: defaultLayouts,
+          _vkeyboard_locales: defaultLocales,
+        }
+      })
+      const key = wrapper.find('.keybtn')
+      expect(key.text()).toBe('scopedslot')
+
     })
   })
 })

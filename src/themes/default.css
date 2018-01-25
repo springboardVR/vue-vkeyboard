@@ -1,0 +1,13 @@
+.v-keyboard.theme-default .wrapper-class {
+
+}
+.v-keyboard.theme-default .row-class {
+
+}
+.v-keyboard.theme-default .key-class {
+
+}
+.v-keyboard.theme-default .key-class.-active {
+  background-color: black;
+  color: white;
+}

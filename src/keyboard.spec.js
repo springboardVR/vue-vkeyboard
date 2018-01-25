@@ -118,6 +118,13 @@ describe('Keyboard', () => {
       wrapper.find('.key-action-shift').trigger('click')
       expect(key.text()).toBe('#')
     })
+    it('should add .-active class on action button', () => {
+      wrapper.setProps({
+        typeset: 'shift',
+      })
+      const key = wrapper.find('.key-action-shift')
+      expect(key.classes()).toContain('-active')
+    })
     it('should warn if :typeset isnt in layout', () => {
       //HACK vue-test-utils triggers two rendering
       wrapper.setProps({typeset: 'foo'})

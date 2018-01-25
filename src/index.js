@@ -1,5 +1,6 @@
 import Keyboard from './Keyboard.vue'
 import KeyboardProvider from './KeyboardProvider.vue'
+import './themes/default.css'
 
 const plugin = (Vue, { layouts = [], locales = []} = {}) => {
   const KeyboardWithProvider = {

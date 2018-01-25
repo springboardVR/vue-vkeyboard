@@ -110,12 +110,12 @@ export default {
 </script>
 
 <template>
-  <div class="keyboard" :class="[classnames.wrapper, `theme-${theme}`]">
+  <div class="v-keyboard" :class="[classnames.wrapper, `theme-${theme}`]">
     <template v-if="rowsToDisplay">
       <div class="row" :class="classnames.row" v-for="row in rowsToDisplay">
         <button
         class="keybtn"
-        :class="[classnames.key, `key-${key.type}-${key.value}`]"
+        :class="[classnames.key, `key-${key.type}-${key.value}`, key.value === internalTypeset && key.type === 'action' ? '-active' : '']"
         type="button"
         @click="onKeyPress(key)"
         v-for="key in row">

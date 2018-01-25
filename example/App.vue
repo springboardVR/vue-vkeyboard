@@ -5,9 +5,9 @@
       <input class="pa2 w-100 black bw0" type="text" v-model="text" placeholder="Type anything">
       <KeyboardWithProvider
         :classnames="{
-          wrapper: 'tc',
-          row: '',
-          key: 'pa2'
+          wrapper: 'wrapper-class tc',
+          row: 'row-class',
+          key: 'key-class pa2'
         }"
         :layout="currentLayout"
         :lang="currentLang"

@@ -26,9 +26,7 @@
     "dist": "example/dist",
     "homepage": "/vue-vkeyboard/"
   },
-  "dependencies": {
-    "lodash.omit": "^4.5.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "bili": "^1.6.5",
     "eslint-config-rem": "^3.0.0",

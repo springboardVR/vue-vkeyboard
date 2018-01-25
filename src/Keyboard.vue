@@ -1,6 +1,5 @@
 <script>
 import { formatKey, formatRow, translateText } from './helpers'
-import omit from 'lodash.omit'
 import Vue from 'vue'
 
 
@@ -38,7 +37,12 @@ export default {
     },
     defaultActions ({ type, value }) {
       if (type === 'action') { //toggle typeset
-        const typesets = omit(this.currentLayout, ['name', 'lang'])
+        const {
+          name,
+          lang,
+          ...typesets
+        } = this.currentLayout
+
         if (typesets.hasOwnProperty(value)) {
           this.internalTypeset =  this.internalTypeset === value ? 'normal' : value
         }

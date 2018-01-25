@@ -1,3 +1,11 @@
+# 0.1.5
+### Improvements
+- get rid of lodash dep
+
+# 0.1.4
+### Fix
+- fix dist files generation 
+
 # 0.1.3
 ### Fix
 - scoped slots in KeyboardProvider (using parent context)

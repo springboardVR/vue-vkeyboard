@@ -118,7 +118,9 @@ export default {
         :class="[classnames.key, `key-${key.type}-${key.value}`, key.value === internalTypeset && key.type === 'action' ? '-active' : '']"
         type="button"
         @click="onKeyPress(key)"
-        v-for="key in row">
+        v-for="(key, i) in row"
+        :key="i"
+        >
           <slot :name="`${key.type}:${key.value}`" :args="key">
             {{ key.translation }}
           </slot>

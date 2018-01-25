@@ -1,7 +1,6 @@
 <template lang="html">
   <div class="pa5 flex">
     <div class="example ba bw1 example-1">
-
       <input class="pa2 w-100 black bw0" type="text" v-model="text" placeholder="Type anything">
       <KeyboardWithProvider
         :classnames="{
@@ -11,7 +10,11 @@
         }"
         :layout="currentLayout"
         :lang="currentLang"
-        @trigger="onKeyboardTrigger"/>
+        @trigger="onKeyboardTrigger">
+        <span slot="action:shift">⇧</span>
+        <span slot="action:bksp">⌫</span>
+        <span slot="input:q" slot-scope="{args}">{{args.value}} (with scoped-slot)</span>
+      </KeyboardWithProvider>
     </div>
     <div class="w-25 ml3">
       <select class="w-100" v-model="currentLayout">

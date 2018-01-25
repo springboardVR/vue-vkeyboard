@@ -6,7 +6,7 @@ const plugin = (Vue, { layouts = [], locales = []} = {}) => {
   const KeyboardWithProvider = {
     name: 'KeyboardWithProvider',
     functional: true,
-    render: (h, { data }) => h(KeyboardProvider, [h(Keyboard, data)]),
+    render: (h, { parent, data, slots, children }) => {return h(KeyboardProvider, [parent.$createElement(Keyboard, data, children)])}, //HACK use the parent rendering context to support named slots (see: https://github.com/vuejs/vue/issues/5759)
   }
   Vue.component(KeyboardWithProvider.name, KeyboardWithProvider)
 }

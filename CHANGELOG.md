@@ -1,3 +1,7 @@
+# 0.1.3
+### Fix
+- scoped slots in KeyboardProvider (using parent context)
+
 # 0.1.2
 ### Features
 - add scoped slots for customizing keys

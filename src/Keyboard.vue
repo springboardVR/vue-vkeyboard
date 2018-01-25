@@ -1,5 +1,6 @@
 <script>
 import { formatKey, formatRow, translateText } from './helpers'
+import omit from 'lodash.omit'
 import Vue from 'vue'
 
 
@@ -33,6 +34,24 @@ export default {
   methods: {
     onKeyPress (value) {
       this.$emit('trigger', value)
+      this.defaultActions(value)
+    },
+    defaultActions ({ type, value }) {
+      if (type === 'action') { //toggle typeset
+        const typesets = omit(this.currentLayout, ['name', 'lang'])
+        if (typesets.hasOwnProperty(value)) {
+          this.internalTypeset =  this.internalTypeset === value ? 'normal' : value
+        }
+      }
+    }
+  },
+  data: () => ({
+    internalTypeset: null,
+  }),
+  watch: {
+    typeset: {
+      immediate: true,
+      handler(typeset) { this.internalTypeset = typeset }
     }
   },
   inject: {
@@ -53,11 +72,14 @@ export default {
       return this.injectedLayouts
     },
     currentLayout () {
+      return this.availableLayouts[this.layout]
+    },
+    rowsToDisplay () {
       if (!this.availableLayouts) {
         Vue.util.warn(`no layouts provided`)
         return
       }
-      const layout = this.availableLayouts[this.layout]
+      const layout = this.currentLayout
       if (!layout) {
         Vue.util.warn(`no layout matching provided`)
         return
@@ -66,9 +88,9 @@ export default {
       if (!locale) {
         Vue.util.warn(`no locale matching lang provided`)
       }
-      let typeset = this.typeset
-      if (!([this.typeset] in layout)) {
-        Vue.util.warn(`undefined typeset: ${this.typeset}`)
+      let typeset = this.internalTypeset
+      if (!([typeset] in layout)) {
+        Vue.util.warn(`undefined typeset: ${typeset}`)
         typeset = 'normal'
       }
       const rows = layout[typeset].map((str) => {
@@ -81,9 +103,7 @@ export default {
           }
         })
       })
-      return {
-        rows
-      }
+      return rows
     }
   }
 }
@@ -91,8 +111,8 @@ export default {
 
 <template>
   <div class="keyboard" :class="[classnames.wrapper, `theme-${theme}`]">
-    <template v-if="currentLayout">
-      <div class="row" :class="classnames.row" v-for="row in currentLayout.rows">
+    <template v-if="rowsToDisplay">
+      <div class="row" :class="classnames.row" v-for="row in rowsToDisplay">
         <button
         class="keybtn"
         :class="[classnames.key, `key-${key.type}-${key.value}`]"

@@ -10,6 +10,7 @@ describe('Keyboard', () => {
   let wrapper
   let localVue = createLocalVue()
   beforeEach(() => {
+    Vue.util.warn = jest.fn()
     wrapper = shallow(Keyboard, {
       localVue,
       propsData: {
@@ -60,7 +61,6 @@ describe('Keyboard', () => {
   })
 
   it('should warn if no provided layouts or locales', () => {
-    Vue.util.warn = jest.fn()
     wrapper = shallow(Keyboard, {
       provide: {
       }
@@ -110,15 +110,19 @@ describe('Keyboard', () => {
       })
       expect(key.text()).toBe('|')
     })
+    it('should toggle typeset by default when clicking on a action btn', () => {
+      const key = wrapper.find('.keybtn')
+      expect(key.text()).toBe('#')
+      wrapper.find('.key-action-shift').trigger('click')
+      expect(key.text()).toBe('|')
+      wrapper.find('.key-action-shift').trigger('click')
+      expect(key.text()).toBe('#')
+    })
     it('should warn if :typeset isnt in layout', () => {
-      Vue.util.warn = jest.fn()
       //HACK vue-test-utils triggers two rendering
       wrapper.setProps({typeset: 'foo'})
-      expect(Vue.util.warn.mock.calls.length).toBe(2);
+      expect(Vue.util.warn.mock.calls.length).toBe(1);
       expect(Vue.util.warn.mock.calls[0][0]).toBe('undefined typeset: foo');
-      wrapper.setProps({typeset: 'bar'})
-      expect(Vue.util.warn.mock.calls.length).toBe(4);
-      expect(Vue.util.warn.mock.calls[2][0]).toBe('undefined typeset: bar');
     })
   })
 })

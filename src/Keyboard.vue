@@ -109,6 +109,18 @@ export default {
       })
       return rows
     }
+  },
+  components: {
+    slotRenderer: {
+      functional: true,
+      props: {
+        vnode: { required: true },
+        args: { },
+      },
+      render(h, { parent, props, children }) {
+        return props.vnode || children
+      }
+    },
   }
 }
 </script>
@@ -125,9 +137,9 @@ export default {
         v-for="(key, i) in row"
         :key="i"
         >
-          <slot :name="`${key.type}:${key.value}`" :args="key">
+          <slot-renderer :vnode="$scopedSlots[`${key.type}:${key.value}`] && $scopedSlots[`${key.type}:${key.value}`]({ args: key })">
             {{ key.translation }}
-          </slot>
+          </slot-renderer>
       </button>
     </div>
     </template>

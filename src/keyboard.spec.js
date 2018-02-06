@@ -1,4 +1,4 @@
-import { mount, shallow, createLocalVue } from 'vue-test-utils'
+import { mount, createLocalVue } from 'vue-test-utils'
 import KeyboardProvider from './KeyboardProvider.vue'
 import Keyboard from './Keyboard.vue'
 import * as defaultLayouts from '../test/fixtures/layouts'
@@ -11,7 +11,7 @@ describe('Keyboard', () => {
   let localVue = createLocalVue()
   beforeEach(() => {
     Vue.util.warn = jest.fn()
-    wrapper = shallow(Keyboard, {
+    wrapper = mount(Keyboard, {
       localVue,
       propsData: {
         layout: 'fr_CA',
@@ -61,12 +61,12 @@ describe('Keyboard', () => {
   })
 
   it('should warn if no provided layouts or locales', () => {
-    wrapper = shallow(Keyboard, {
+    wrapper = mount(Keyboard, {
       provide: {
       }
     })
     expect(Vue.util.warn.mock.calls[0][0]).toBe('no layout matching provided');
-    wrapper = shallow(Keyboard, {
+    wrapper = mount(Keyboard, {
       propsData: {
         layout: 'fr_CA',
         lang: 'fr_CA',
@@ -135,18 +135,25 @@ describe('Keyboard', () => {
 
   describe('custom keys via scoped slots', () => {
     it('should render scopedslot', () => {
-      wrapper = shallow(Keyboard, {
-        slots: {
-          'input:#': {
-            render(h) {
-              return h('span', 'scopedslot')
-            }
-          }
+      const KeyboardWithSlots = {
+        functional: true,
+        props: {
+          layout: {},
+          lang: {},
         },
-        propsData: {
-          layout: 'fr_CA',
-          lang: 'fr_CA',
-        },
+        render(h, { data }) {
+          return h(Keyboard, {
+            props: {
+              layout: 'fr_CA',
+              lang: 'fr_CA',
+            },
+            scopedSlots: {
+              'input:#': () => h('span', 'scopedslot')
+            },
+          })
+        }
+      }
+      wrapper = mount(KeyboardWithSlots, {
         provide: {
           _vkeyboard_layouts: defaultLayouts,
           _vkeyboard_locales: defaultLocales,

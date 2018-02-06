@@ -14,6 +14,7 @@
         <span slot="action:shift">⇧</span>
         <span slot="action:bksp">⌫</span>
         <span slot="input:q" slot-scope="{args}">{{args.value}} (with scoped-slot)</span>
+        <span slot="action:shift" slot-scope="{args}">⇧</span>
       </KeyboardWithProvider>
     </div>
     <div class="w-25 ml3">

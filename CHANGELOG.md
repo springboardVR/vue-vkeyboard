@@ -1,3 +1,7 @@
+# 0.1.6
+### Fix
+- prevent warning of slot duplication
+
 # 0.1.5
 ### Improvements
 - get rid of lodash dep

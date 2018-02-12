@@ -1,3 +1,7 @@
+# 0.1.7
+### Improvements
+- improve config: can now pass locales/layouts in plugin options
+
 # 0.1.6
 ### Fix
 - prevent warning of slot duplication

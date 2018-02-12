@@ -1,8 +1,7 @@
 import { mount, createLocalVue } from 'vue-test-utils'
-import KeyboardProvider from './KeyboardProvider.vue'
-import Keyboard from './Keyboard.vue'
-import * as defaultLayouts from '../test/fixtures/layouts'
-import * as defaultLocales from '../test/fixtures/locales'
+import Keyboard from '../Keyboard.vue'
+import * as defaultLayouts from '../../test/fixtures/layouts'
+import * as defaultLocales from '../../test/fixtures/locales'
 import Vue from 'vue'
 // import jest from 'jest'
 

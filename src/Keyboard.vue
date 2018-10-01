@@ -65,11 +65,11 @@ export default {
   inject: {
     injectedLocales: {
       from: '_vkeyboard_locales',
-      default: () => ([])
+      // default: () => ({})
     },
     injectedLayouts: {
       from: '_vkeyboard_layouts',
-      default: () => ([])
+      // default: () => ({})
     },
   },
   computed: {
@@ -80,31 +80,38 @@ export default {
       return this.injectedLayouts
     },
     currentLayout () {
-      const layout = this.layout && this.layout in this.availableLayouts
-      ? this.layout
-      : this.defaultLayout
-      return this.availableLayouts[layout]
-    },
-    rowsToDisplay () {
       if (!this.availableLayouts) {
         Vue.util.warn(`no layouts provided`)
         return
       }
-      if (!this.layout) {
+      const hasLayout = this.layout && this.layout in this.availableLayouts
+      if (!hasLayout) {
         Vue.util.warn(`no layout matching provided: falling back to the default: ${this.defaultLayout}`)
         return
       }
-      const layout = this.currentLayout
-      const locale = this.availableLocales[this.lang ? this.lang : layout.lang[0]]
-      if (!locale) {
-        Vue.util.warn(`no locale matching lang provided`)
+      const layout = hasLayout
+        ? this.layout
+        : this.defaultLayout
+      return this.availableLayouts[layout]
+    },
+    currentLang () {
+      if (!this.currentLayout) return
+      const hasLang = this.lang && this.currentLayout.lang.includes(this.lang)
+      const lang = hasLang ? this.lang : this.currentLayout.lang[0]
+      if (!hasLang) {
+        Vue.util.warn(`no locale matching lang provided: falling back to ${lang}`)
       }
+      return lang
+    },
+    rowsToDisplay () {
+      if (!this.currentLayout) return []
+      const locale = this.availableLocales[this.currentLang]
       let typeset = this.internalTypeset
-      if (!([typeset] in layout)) {
+      if (!([typeset] in this.currentLayout)) {
         Vue.util.warn(`undefined typeset: ${typeset}`)
         typeset = 'normal'
       }
-      const rows = layout[typeset].map((str) => {
+      const rows = this.currentLayout[typeset].map((str) => {
         return formatRow(str, key => {
           const { type, value } = formatKey(key)
           return {

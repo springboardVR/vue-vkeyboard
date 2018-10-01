@@ -64,20 +64,22 @@ describe('Keyboard', () => {
       provide: {
       }
     })
-    expect(Vue.util.warn).toHaveBeenCalledWith('no layout matching provided: falling back to the default: msUSEnglish');
+    expect(Vue.util.warn).toHaveBeenCalledWith('no layouts provided');
+  })
+  it('should warn if no layout props is passed', () => {
     wrapper = shallowMount(Keyboard, {
       propsData: {
-        layout: 'fr_CA',
-        lang: 'fr_CA',
+        // layout: 'fr_CA',
+        // lang: 'fr_CA',
       },
       provide: {
         _vkeyboard_layouts: defaultLayouts,
+        _vkeyboard_locales: defaultLocales,
       }
     })
-    expect(Vue.util.warn).toHaveBeenCalledWith('no locale matching lang provided');
-    expect(Vue.util.warn).toHaveBeenCalledTimes(2);
+    expect(Vue.util.warn).toHaveBeenCalledWith('no layout matching provided: falling back to the default: msUSEnglish');
   })
-  it('should fallback to default layout', () => {
+  it('should fallback to default layout/lang', () => {
     wrapper = shallowMount(Keyboard, {
       propsData: {
         layout: 'hu-HU',
@@ -85,9 +87,12 @@ describe('Keyboard', () => {
       },
       provide: {
         _vkeyboard_layouts: defaultLayouts,
+        _vkeyboard_locales: defaultLocales,
       }
     })
-    expect(wrapper.findAll('.keybtn').length).toBe(58)
+    setTimeout(() => {
+      expect(wrapper.findAll('.keybtn').length).toBe(58)
+    }, 0)
   })
 
   //locale

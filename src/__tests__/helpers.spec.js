@@ -1,4 +1,4 @@
-import { shallow } from 'vue-test-utils'
+import { shallow } from '@vue/test-utils'
 import { formatKey, formatRow, translateText } from '../helpers.js'
 
 describe('#formatRow', () => {

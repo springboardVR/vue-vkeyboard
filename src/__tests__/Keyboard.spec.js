@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from 'vue-test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 import Keyboard from '../Keyboard.vue'
 import * as defaultLayouts from '../../test/fixtures/layouts'
 import * as defaultLocales from '../../test/fixtures/locales'
@@ -10,7 +10,7 @@ describe('Keyboard', () => {
   let localVue = createLocalVue()
   beforeEach(() => {
     Vue.util.warn = jest.fn()
-    wrapper = mount(Keyboard, {
+    wrapper = shallowMount(Keyboard, {
       localVue,
       propsData: {
         layout: 'fr_CA',
@@ -60,12 +60,12 @@ describe('Keyboard', () => {
   })
 
   it('should warn if no provided layouts or locales', () => {
-    wrapper = mount(Keyboard, {
+    wrapper = shallowMount(Keyboard, {
       provide: {
       }
     })
-    expect(Vue.util.warn.mock.calls[0][0]).toBe('no layout matching provided');
-    wrapper = mount(Keyboard, {
+    expect(Vue.util.warn).toHaveBeenCalledWith('no layout matching provided: falling back to the default: msUSEnglish');
+    wrapper = shallowMount(Keyboard, {
       propsData: {
         layout: 'fr_CA',
         lang: 'fr_CA',
@@ -74,8 +74,8 @@ describe('Keyboard', () => {
         _vkeyboard_layouts: defaultLayouts,
       }
     })
-    expect(Vue.util.warn.mock.calls[1][0]).toBe('no locale matching lang provided');
-    expect(Vue.util.warn.mock.calls.length).toBe(2);
+    expect(Vue.util.warn).toHaveBeenCalledWith('no locale matching lang provided');
+    expect(Vue.util.warn).toHaveBeenCalledTimes(2);
   })
 
   //locale
@@ -125,10 +125,10 @@ describe('Keyboard', () => {
       expect(key.classes()).toContain('-active')
     })
     it('should warn if :typeset isnt in layout', () => {
-      //HACK vue-test-utils triggers two rendering
+      //HACK @vue/test-utils triggers two rendering
       wrapper.setProps({typeset: 'foo'})
-      expect(Vue.util.warn.mock.calls.length).toBe(1);
-      expect(Vue.util.warn.mock.calls[0][0]).toBe('undefined typeset: foo');
+      expect(Vue.util.warn).toHaveBeenCalledTimes(1);
+      expect(Vue.util.warn).toHaveBeenCalledWith('undefined typeset: foo');
     })
   })
 
@@ -152,7 +152,7 @@ describe('Keyboard', () => {
           })
         }
       }
-      wrapper = mount(KeyboardWithSlots, {
+      wrapper = shallowMount(KeyboardWithSlots, {
         provide: {
           _vkeyboard_layouts: defaultLayouts,
           _vkeyboard_locales: defaultLocales,

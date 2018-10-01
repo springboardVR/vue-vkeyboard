@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from 'vue-test-utils'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
 import KeyboardProvider from '../KeyboardProvider.vue'
 import Keyboard from '../Keyboard.vue'
 import * as defaultLayouts from '../../test/fixtures/layouts'
@@ -12,28 +12,17 @@ describe('KeyboardProvider', () => {
   beforeEach(() => {
     Vue.util.warn = jest.fn()
 
-    const KeyboardWithProvider = {
-      name: 'KeyboardWithProvider',
-      functional: true,
-      render: (h, { parent, data, slots, children }) => {return h(KeyboardProvider, {
-        props: {
-          layouts: {
-             test: 'test',
-          },
-          locales: {
-            test: 'test',
-          },
-        }
-      },[parent.$createElement(Keyboard, data, children)])}, //HACK use the parent rendering context to support named slots (see: https://github.com/vuejs/vue/issues/5759)
-    }
-    const mounted = mount(KeyboardWithProvider, {
+
+    wrapper = shallowMount(KeyboardProvider, {
       localVue,
-      propsData: {
+      props: {
         layouts: defaultLayouts,
         locales: defaultLocales,
       },
+      slots: {
+        default: [Keyboard],
+      }
     })
-    wrapper = mounted.find({ name: 'KeyboardProvider' })
   })
 
   //render
@@ -41,9 +30,11 @@ describe('KeyboardProvider', () => {
     expect(wrapper.exists()).toBe(true)
     expect(wrapper.find({ name: 'Keyboard' }).exists()).toBe(true)
   })
-  it('provide layouts and locales to keyboard', () => {
+  it('provide layouts and locales to keyboard', async () => {
     const Keyboard = wrapper.find({ name: 'Keyboard' })
-    expect(Keyboard.vm.injectedLocales).toEqual({ test: 'test' })
-    expect(Keyboard.vm.injectedLayouts).toEqual({ test: 'test' })
+    setTimeout(() => {
+      expect(Keyboard.vm.injectedLocales).toEqual({ test: 'test' })
+      expect(Keyboard.vm.injectedLayouts).toEqual({ test: 'test' })
+    },0)
   })
 })

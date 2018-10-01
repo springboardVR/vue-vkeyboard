@@ -80,18 +80,18 @@ export default {
       return this.injectedLayouts
     },
     currentLayout () {
-      return this.availableLayouts[this.layout] || this.defaultLayout
+      return this.availableLayouts[this.layout || this.defaultLayout]
     },
     rowsToDisplay () {
       if (!this.availableLayouts) {
         Vue.util.warn(`no layouts provided`)
         return
       }
-      const layout = this.currentLayout
-      if (!layout) {
-        Vue.util.warn(`no layout matching provided`)
+      if (!this.layout) {
+        Vue.util.warn(`no layout matching provided: falling back to the default: ${this.defaultLayout}`)
         return
       }
+      const layout = this.currentLayout
       const locale = this.availableLocales[this.lang ? this.lang : layout.lang[0]]
       if (!locale) {
         Vue.util.warn(`no locale matching lang provided`)

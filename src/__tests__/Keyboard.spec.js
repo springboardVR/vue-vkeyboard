@@ -77,6 +77,18 @@ describe('Keyboard', () => {
     expect(Vue.util.warn).toHaveBeenCalledWith('no locale matching lang provided');
     expect(Vue.util.warn).toHaveBeenCalledTimes(2);
   })
+  it('should fallback to default layout', () => {
+    wrapper = shallowMount(Keyboard, {
+      propsData: {
+        layout: 'hu-HU',
+        defaultLayout: 'fr_CA'
+      },
+      provide: {
+        _vkeyboard_layouts: defaultLayouts,
+      }
+    })
+    expect(wrapper.findAll('.keybtn').length).toBe(58)
+  })
 
   //locale
   it('should display translated text', () => {

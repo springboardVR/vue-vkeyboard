@@ -80,7 +80,10 @@ export default {
       return this.injectedLayouts
     },
     currentLayout () {
-      return this.availableLayouts[this.layout || this.defaultLayout]
+      const layout = this.layout && this.layout in this.availableLayouts
+      ? this.layout
+      : this.defaultLayout
+      return this.availableLayouts[layout]
     },
     rowsToDisplay () {
       if (!this.availableLayouts) {

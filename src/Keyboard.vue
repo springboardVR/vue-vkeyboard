@@ -87,7 +87,6 @@ export default {
       const hasLayout = this.layout && this.layout in this.availableLayouts
       if (!hasLayout) {
         Vue.util.warn(`no layout matching provided: falling back to the default: ${this.defaultLayout}`)
-        return
       }
       const layout = hasLayout
         ? this.layout

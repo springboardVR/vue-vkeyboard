@@ -90,9 +90,7 @@ describe('Keyboard', () => {
         _vkeyboard_locales: defaultLocales,
       }
     })
-    setTimeout(() => {
-      expect(wrapper.findAll('.keybtn').length).toBe(58)
-    }, 0)
+    expect(wrapper.findAll('.keybtn').length).toBe(58)
   })
 
   //locale

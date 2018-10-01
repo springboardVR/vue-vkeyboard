@@ -2,6 +2,7 @@
 import { formatKey, formatRow, translateText } from './helpers'
 import Vue from 'vue'
 
+const defaultLayout = 'msUSEnglish'
 
 export default {
   name: 'Keyboard',
@@ -11,7 +12,10 @@ export default {
     },
     layout: {
       type: String,
-      default: 'msUSEnglish'
+    },
+    defaultLayout: {
+      type: String,
+      default: defaultLayout
     },
     typeset: {
       type: String,
@@ -76,7 +80,7 @@ export default {
       return this.injectedLayouts
     },
     currentLayout () {
-      return this.availableLayouts[this.layout]
+      return this.availableLayouts[this.layout] || this.defaultLayout
     },
     rowsToDisplay () {
       if (!this.availableLayouts) {
